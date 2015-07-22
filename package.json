@@ -71,7 +71,7 @@
   },
   "dependencies": {
     "@economist/component-articlestore": "^1.0.1",
-    "@economist/component-world-if-app": "^4.0.4",
+    "@economist/component-world-if-app": "^4.0.7",
     "react": "^0.13.3"
   },
   "devDependencies": {
