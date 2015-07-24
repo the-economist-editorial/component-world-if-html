@@ -49,7 +49,17 @@ export default class WorldIfHTML extends React.Component {
   }
 
   renderMetaTags() {
-    // {{#each content.attributes.metaTags}}<meta {{#each this}}{{@key}}="{{this}}"{{/each}}/>{{/each}}
+    const id = ((this.props.path || '').match(/article\/(\d+)/) || [])[1];
+    let metaTags;
+    if (!id) {
+      metaTags = articleStore.main;
+    } else {
+      metaTags = articleStore.get(id);
+    }
+    metaTags = ((metaTags || {}).attributes || {}).metaTags || [];
+    return metaTags.map((properties) => (
+      <meta {...properties}/>
+    ));
   }
 
   render() {
