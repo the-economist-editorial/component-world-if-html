@@ -64,7 +64,7 @@ export default class WorldIfHTML extends React.Component {
 
   render() {
     return (
-      <html>
+      <html manifest="/application.manifest">
         <head>
           <meta charSet="utf-8"/>
           {this.renderInlineStyles()}
