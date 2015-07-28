@@ -70,8 +70,8 @@
     "test:watch": "npm run test:base -- -wR min"
   },
   "dependencies": {
-    "@economist/component-articlestore": "^1.1.2",
-    "@economist/component-world-if-app": "^5.0.0",
+    "@economist/component-articlestore": "^2.0.0",
+    "@economist/component-world-if-app": "^6.0.0",
     "react": "^0.13.3"
   },
   "devDependencies": {
