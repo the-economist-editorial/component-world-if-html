@@ -49,7 +49,7 @@ export default class WorldIfHTML extends React.Component {
   }
 
   renderMetaTags() {
-    const id = ((this.props.path || '').match(/article\/(\d+)/) || [])[1];
+    const id = this.getArtcileId();
     let metaTags;
     if (!id) {
       metaTags = articleStore.main;
@@ -60,6 +60,18 @@ export default class WorldIfHTML extends React.Component {
     return metaTags.map((properties) => (
       <meta {...properties}/>
     ));
+  }
+
+  getArtcileId() {
+    return ((this.props.path || '').match(/article\/(\d+)/) || [])[1];
+  }
+
+  pageDataID() {
+    let id = this.getArtcileId();
+    if (!id) {
+      id = (this.props.path || '').match(/404/) ? '404' : 'homepage';
+    }
+    return `page-${id}`;
   }
 
   render() {
@@ -77,8 +89,8 @@ export default class WorldIfHTML extends React.Component {
           {this.renderScripts()}
           {this.renderInlineScripts()}
         </head>
-        <body>
-          <WorldIfApp path={this.props.path}/>
+        <body data-id={this.pageDataID()} >
+          <WorldIfApp path={this.props.path} />
         </body>
       </html>
     );
