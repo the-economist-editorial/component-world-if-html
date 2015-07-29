@@ -63,15 +63,15 @@ export default class WorldIfHTML extends React.Component {
   }
 
   getArtcileId() {
-    let id = ((this.props.path || '').match(/article\/(\d+)/) || [])[1];
-    if (!id) {
-      id = (this.props.path).match(/404/) ? '404' : 'homepage';
-    }
-    return id;
+    return ((this.props.path || '').match(/article\/(\d+)/) || [])[1];
   }
 
-  pageCssClass() {
-    return 'page-' + this.getArtcileId();
+  pageDataID() {
+    let id = this.getArtcileId();
+    if (!id) {
+      id = (this.props.path || '').match(/404/) ? '404' : 'homepage';
+    }
+    return `page-${id}`;
   }
 
   render() {
@@ -89,7 +89,7 @@ export default class WorldIfHTML extends React.Component {
           {this.renderScripts()}
           {this.renderInlineScripts()}
         </head>
-        <body className={this.pageCssClass()} >
+        <body data-id={this.pageDataID()} >
           <WorldIfApp path={this.props.path} />
         </body>
       </html>
