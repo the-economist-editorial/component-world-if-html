@@ -13,6 +13,7 @@ export default class WorldIfHTML extends React.Component {
       styles: React.PropTypes.object,
       inlineScripts: React.PropTypes.array,
       inlineStyles: React.PropTypes.array,
+      description: React.PropTypes.string.isRequired,
     };
   }
 
@@ -82,6 +83,7 @@ export default class WorldIfHTML extends React.Component {
           {this.renderInlineStyles()}
           <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <meta name="description" content={this.props.description} />
           <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
           <title>{this.props.title}</title>
           {this.renderMetaTags()}
